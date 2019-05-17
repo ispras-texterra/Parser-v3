@@ -1,0 +1,6 @@
+from __future__ import absolute_import
+
+from tdozat_parser.parser.elmo_network import ElmoNetwork
+from tdozat_parser.parser.parser_network import ParserNetwork
+from tdozat_parser.parser.tagger_network import TaggerNetwork
+from tdozat_parser.parser.graph_parser_network import GraphParserNetwork
