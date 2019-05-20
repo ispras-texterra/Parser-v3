@@ -21,7 +21,6 @@ from __future__ import print_function
 
 import time
 import os
-import curses
 import codecs
 
 import tensorflow as tf
@@ -169,6 +168,7 @@ class BaseNetwork(object):
       #run_metadata = tf.RunMetadata()
       ##---
       if not noscreen:
+        import curses
         #---------------------------------------------------------
         def run(stdscr):
           current_optimizer = 'Adam'

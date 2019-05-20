@@ -26,7 +26,6 @@ try:
 except ImportError:
   import pickle as pkl
   
-import curses
 import time
 
 import numpy as np
@@ -383,6 +382,9 @@ class GraphOutputs(object):
   #=============================================================
   def print_recent_history(self, stdscr=None):
     """"""
+
+    if stdscr is not None:
+      import curses
     
     n_batches = self.history['total']['n_batches']
     n_tokens = self.history['total']['n_tokens']
