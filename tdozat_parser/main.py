@@ -137,6 +137,7 @@ def train(**kwargs):
   if save_dir is not None:
     kwargs['DEFAULT']['save_dir'] = save_dir
   config = Config(config_file=config_file, **kwargs)
+  save_metadir = config.get('DEFAULT', 'save_metadir')
   save_dir = config.get('DEFAULT', 'save_dir')
   
   # If not loading, ask the user if they want to overwrite the directory
@@ -161,7 +162,7 @@ def train(**kwargs):
   
   network_list = config.get(network_class, 'input_network_classes')
   if not load:
-    with open(os.path.join(save_dir, 'config.cfg'), 'w') as f:
+    with open(os.path.join(save_metadir, f"{network_class}.cfg"), 'w') as f:
       config.write(f)
   input_networks, networks = resolve_network_dependencies(config, network_class, network_list, {})
   NetworkClass = getattr(parser, network_class)
