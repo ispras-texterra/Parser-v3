@@ -128,7 +128,7 @@ class BaseNetwork(object):
       network_variables = set(tf.global_variables(scope=input_network.classname))
       non_save_variables = set(tf.get_collection('non_save_variables'))
       network_save_variables = network_variables - non_save_variables
-      saver = tf.train.Saver(list(network_save_variables))
+      saver = tf.train.Saver(list(network_save_variables), save_relative_paths=True)
       input_network_savers.append(saver)
       input_network_paths.append(self._config(self, input_network.classname+'_dir'))
     with tf.variable_scope(self.classname, reuse=False):
@@ -152,7 +152,7 @@ class BaseNetwork(object):
       all_variables = set(tf.global_variables(scope=self.classname))
       non_save_variables = set(tf.get_collection('non_save_variables'))
       save_variables = all_variables - non_save_variables
-      saver = tf.train.Saver(list(save_variables), max_to_keep=1)
+      saver = tf.train.Saver(list(save_variables), max_to_keep=1, save_relative_paths=True)
 
     screen_output = []
     config = tf.ConfigProto()
