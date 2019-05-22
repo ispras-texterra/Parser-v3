@@ -145,8 +145,11 @@ class CoNLLUDataset(set):
     return iter(batches)
     
   #=============================================================
-  def set_placeholders(self, indices, feed_dict={}):
+  def set_placeholders(self, indices, feed_dict=None):
     """"""
+
+    if feed_dict is None:
+      feed_dict = {}
     
     for vocab in self:
       data = self._multibucket.get_data(vocab.classname, indices)
