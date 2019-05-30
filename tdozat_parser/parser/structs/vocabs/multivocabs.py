@@ -161,8 +161,12 @@ class Multivocab(BaseVocab, list):
     """"""
     
     return self.ROOT_STR
-  
+
   #=============================================================
+  def reset(self):
+    for vocab in self:
+      vocab.reset()
+
   def open(self):
     for vocab in self:
       vocab.open()
